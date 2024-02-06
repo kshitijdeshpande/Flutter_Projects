@@ -86,12 +86,12 @@ class _Assignment1State extends State<Assignment1> {
 // ... (rest of the code remains the same)
 
 class HomeScreen extends StatelessWidget {
-  void navigateToAnotherPage(BuildContext context, String name) {
+  void navigateToAnotherPage(BuildContext context, String name, String imagePath) {
     if (name != null && name.isNotEmpty) {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => AnotherPage(name: name),
+          builder: (context) => AnotherPage(name: name, imagePath: imagePath),
         ),
       );
     }
@@ -127,7 +127,7 @@ class HomeScreen extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              navigateToAnotherPage(context, 'Shreyas');
+              navigateToAnotherPage(context, 'Shreyas', 'assets/Dada.jpg');
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -136,7 +136,7 @@ class HomeScreen extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: buildRoundedImage('assets/Dada.jpg', 86),
+                    child: buildRoundedImage('assets/Dada.jpg', 130),
                   ),
                 ),
                 const SizedBox(height: 8),
@@ -154,36 +154,24 @@ class HomeScreen extends StatelessWidget {
           ),
 
           GestureDetector(
-            onTap: () {
-              navigateToAnotherPage(context, 'NetworkImage');
-            },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Align(
                   alignment: Alignment.center,
                   child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: buildRoundedNetworkImage('https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQM1UwCk4MVA2kzPIZ3DnopTTngFgW9Iolw3BdHNaJ3_iEjI8ru', 150),
+                    padding: const EdgeInsets.all(8.0),
+                    child: buildRoundedNetworkImage('https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQM1UwCk4MVA2kzPIZ3DnopTTngFgW9Iolw3BdHNaJ3_iEjI8ru', 80),
                   ),
                 ),
-                const SizedBox(height: 8),
-                Text(
-                  'Network Image',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+                const SizedBox(height: 4),
               ],
             ),
           ),
 
           GestureDetector(
             onTap: () {
-              navigateToAnotherPage(context, 'Vaishnavi');
+              navigateToAnotherPage(context, 'Vaishnavi', 'assets/Vahini.jpg',);
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -192,7 +180,7 @@ class HomeScreen extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: buildRoundedImage('assets/Vahini.jpg', 86),
+                    child: buildRoundedImage('assets/Vahini.jpg', 130),
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -213,6 +201,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
 
 
 class FamilyPage extends StatelessWidget {
@@ -311,17 +300,39 @@ class VenuePage extends StatelessWidget {
 
 class AnotherPage extends StatelessWidget {
   final String name;
+  final String imagePath;
 
-  const AnotherPage({Key? key, required this.name}) : super(key: key);
+  const AnotherPage({Key? key, required this.name, required this.imagePath}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Another Page'),
+        title: Text('Another Page - $name'),
       ),
+      backgroundColor: Colors.amber,
       body: Center(
-        child: Text('Welcome to Another Page, $name!'),
+        
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset(
+              imagePath,
+              width: 300,
+              height: 600,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              '',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.blue,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

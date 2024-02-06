@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:profile_app/profile.dart';
 
+
 void main() {
   
   runApp(const MainApp());
@@ -18,3 +19,8 @@ class MainApp extends StatelessWidget {
     );
   }
 }
+
+
+
+
+

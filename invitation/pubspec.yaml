@@ -21,3 +21,10 @@ flutter:
     - assets/Dada.jpg
     - assets/Vahini.jpg
 
+flutter:
+  fonts:
+    - family: MarathiFont
+      fonts:
+        - asset: assets/fonts/MarathiFont.ttf
+
+
